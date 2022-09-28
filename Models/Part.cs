@@ -1,6 +1,6 @@
-namespace InventoryAPI
+namespace InventoryAPI.Models
 {
-    public class WeatherForecast
+    public class Part
     {
         public DateTime Date { get; set; }
 
