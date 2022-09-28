@@ -1,5 +1,7 @@
 # InventoryAPI
 
+## OPEN SOLUTION IN VISUAL STUDIO, RUN APP WITH GREEN PLAY BUTTON
+
 CACI Coding Exercise 09/28/22
 
 REST API development – Inventory API
@@ -19,37 +21,4 @@ Allow for the following API functions:
 -Given a model ID, store ID and optional warehouse ID, reserve an item for a particular store 
 	(i.e., take it out of available inventory) (IActionResult) (PartController)
 -Request an email notification (given an email address) when an item arrives at a store (IActionResult) (PartController) and EmailMsg
--Inform inventory system when a part arrives at a store (Scan In Item) (IActionResult) (PartController)
 -If familiar, first document the API using the OpenAPI 3.0 (Swagger) standard in either JSON or YAML.
-
-DB Tables / POCOs needed
--Part
-	-Id
-	-Name
-	-ModelId
-	-WarehouseId
-	-StoreId
-	-CategoryId
-	-CustomerId
-	-AvailableYN
--Warehouse
-	-Id
-	-Name
-	-Address
--Store
-	-Id
-	-Name
-	-Address
--Model
-	-Id
-	-Name
-	-ModelNumber
--Category
-	-Id
-	-Name
--Customer
-	-Id
-	-Name
-	-Email
-	-Phone
-	-Address

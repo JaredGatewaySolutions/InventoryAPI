@@ -1,3 +1,4 @@
+using InventoryAPI.Models;
 using InventoryAPI.Services;
 using InventoryAPI.Services.Interfaces;
 
@@ -13,6 +14,12 @@ builder.Services.AddScoped<IModelService, ModelService>();
 builder.Services.AddScoped<IPartService, PartService>();
 builder.Services.AddScoped<IWarehouseService, WarehouseService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+var emailConfig = builder.Configuration
+    .GetSection("EmailConfiguration")
+    .Get<EmailConfiguration>();
+
+builder.Services.AddSingleton(emailConfig);
 
 var app = builder.Build();
 
