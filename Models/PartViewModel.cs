@@ -7,7 +7,6 @@ namespace InventoryAPI.Models
         public int ModelId { get; set; }
         public int WarehouseId { get; set; }
         public int StoreId { get; set; }
-        public int CategoryId { get; set; }
         public int CustomerId { get; set; }
         public bool IsAvailable { get; set; }
     }

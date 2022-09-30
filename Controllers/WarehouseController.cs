@@ -31,7 +31,7 @@ namespace InventoryAPI.Controllers
         {
             IEnumerable<WarehouseViewModel> result = Enumerable.Empty<WarehouseViewModel>();
             try {
-                result = await _warehouseService.GetByModelId(modelId);
+                result = await _warehouseService.GetByModelIdAsync(modelId);
             } catch (Exception ex) {
                 _logger.LogError(ex.StackTrace);
             }

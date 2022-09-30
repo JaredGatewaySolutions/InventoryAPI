@@ -6,17 +6,25 @@ namespace InventoryAPI.Services
 {
     public class PartService : IPartService
     {
-        public Task<IEnumerable<PartViewModel>> GetByModel(int modelId)
+        private readonly ApplicationDbContext _context;
+
+        public PartService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public async Task<IEnumerable<PartViewModel>> GetByModelAsync(int modelId)
+        {
+            return await _context.Part.Where(x => x.ModelId == modelId)
+                .OrderByDescending(x => x.ModelId)
+                .ToListAsync();
+        }
+
+        public async Task<PartViewModel> ReservePartAsync(int modelId, int storeId, int? warehouseId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PartViewModel> ReservePart(int modelId, int storeId, int? warehouseId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IActionResult> Subscribe(int partId, int storeId, string email)
+        public async Task<IActionResult> SubscribeAsync(int partId, int storeId, string email)
         {
             throw new NotImplementedException();
         }

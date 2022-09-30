@@ -10,5 +10,6 @@
         /// Not stored in Database, derived from part count of that model type
         /// </summary>
         public int? PartQuantity { get; set; }
+        public int CategoryId { get; set; }
     }
 }

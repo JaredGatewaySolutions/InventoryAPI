@@ -32,7 +32,7 @@ namespace InventoryAPI.Controllers
         {
             PartViewModel result = new();
             try {
-                result = await _partService.ReservePart(modelId, storeId, warehouseId);
+                result = await _partService.ReservePartAsync(modelId, storeId, warehouseId);
             } catch (Exception ex) {
                 _logger.LogError(ex, "Reserving part failed");
             }
@@ -54,7 +54,7 @@ namespace InventoryAPI.Controllers
                     subscription.StoreId > 0 &&
                     subscription.Email != null &&
                     Util.IsValidEmail(subscription.Email)) {
-                        return await _partService.Subscribe(subscription.PartId, subscription.StoreId, subscription.Email);
+                        return await _partService.SubscribeAsync(subscription.PartId, subscription.StoreId, subscription.Email);
                 }
                 else { return BadRequest("Invalid Request"); }
             } catch (Exception ex) {

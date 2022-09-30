@@ -1,5 +1,11 @@
 # InventoryAPI
 
+## Create an empty Database in MS SQL Managment Studio with these props and new user:
+
+Database=InventoryAppDB;
+user=inventory_bda;
+password=FakePSSWD!$;
+
 ## OPEN SOLUTION IN VISUAL STUDIO, RUN APP WITH GREEN PLAY BUTTON
 
 CACI Coding Exercise 09/28/22

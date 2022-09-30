@@ -1,6 +1,8 @@
+using InventoryAPI;
 using InventoryAPI.Models;
 using InventoryAPI.Services;
 using InventoryAPI.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,9 +23,28 @@ var emailConfig = builder.Configuration
 
 builder.Services.AddSingleton(emailConfig);
 
+
+var dbAssemblyName = typeof(Program).Namespace;
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("MSSQLConnection"),
+        sqlOptions => sqlOptions.MigrationsAssembly(dbAssemblyName)
+    )
+);
+
+var identityBuilder = builder.Services.AddIdentityCore<AppIdentityUser>(o =>
+{
+    o.Password.RequiredLength = 8;
+    o.User = new UserOptions { RequireUniqueEmail = true };
+});
+
+identityBuilder = new IdentityBuilder(identityBuilder.UserType, typeof(IdentityRole), identityBuilder.Services);
+identityBuilder.AddEntityFrameworkStores<ApplicationDbContext>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
